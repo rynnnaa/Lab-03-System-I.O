@@ -2,7 +2,7 @@
 
 namespace Lab_03_System_I.O
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
