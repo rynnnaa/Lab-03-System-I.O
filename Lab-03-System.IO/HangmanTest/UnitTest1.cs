@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace XUnitTestProject1
+namespace HangmanTest
 {
     public class UnitTest1
     {

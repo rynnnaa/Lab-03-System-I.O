@@ -8,14 +8,18 @@ namespace SysmtemIO_demo
         static void Main(string[] args)
         {
             string path = "../../../hangmanGame.txt";
-            Console.WriteLine("Welcome to the Guessing Game!");
-  
+            CreateFile(path);
+
         }
-        public static string CreateFile(string path)
+        static void CreateFile(string path)
         {
             using (StreamWriter streamWriter = new StreamWriter(path))
+            {
+                Console.WriteLine("Welcome to the Guessing Game!");
+                streamWriter.WriteLine("Welcome to the Guessing Game!");
+
+            }
 
         }
-
     }
 }
