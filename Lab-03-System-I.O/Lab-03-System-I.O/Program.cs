@@ -1,12 +1,21 @@
 ﻿using System;
+using System.IO;
 
-namespace Lab_03_System_I.O
+namespace SysmtemIO_demo
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string path = "../../../hangmanGame.txt";
+            Console.WriteLine("Welcome to the Guessing Game!");
+  
         }
+        public static string CreateFile(string path)
+        {
+            using (StreamWriter streamWriter = new StreamWriter(path))
+
+        }
+
     }
 }
