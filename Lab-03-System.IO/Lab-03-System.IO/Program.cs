@@ -24,7 +24,9 @@ namespace SysmtemIO_demo
         }
         public static void GameMenuUI(string path)
         {
-            try
+            bool playingGame = true;
+
+            while (playingGame)
             {
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1: View all words");
@@ -32,10 +34,14 @@ namespace SysmtemIO_demo
                 Console.WriteLine("3: Delete a word");
                 Console.WriteLine("4: Play Game");
                 Console.WriteLine("5: Exit");
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    string selectedOption = Console.ReadLine();
+                    selected = Convert.ToInt32(selectedOption);
+
+                    
+
+                }
             }
         }    
     }
