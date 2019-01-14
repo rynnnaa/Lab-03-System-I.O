@@ -3,15 +3,16 @@ using System.IO;
 
 namespace SysmtemIO_demo
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string path = "../../../hangmanGame.txt";
             CreateFile(path);
+            GameMenuUI(path);
 
         }
-        static void CreateFile(string path)
+        public static void CreateFile(string path)
         {
             using (StreamWriter streamWriter = new StreamWriter(path))
             {
@@ -21,5 +22,21 @@ namespace SysmtemIO_demo
             }
 
         }
+        public static void GameMenuUI(string path)
+        {
+            try
+            {
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1: View all words");
+                Console.WriteLine("2: Add a word");
+                Console.WriteLine("3: Delete a word");
+                Console.WriteLine("4: Play Game");
+                Console.WriteLine("5: Exit");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }    
     }
 }
