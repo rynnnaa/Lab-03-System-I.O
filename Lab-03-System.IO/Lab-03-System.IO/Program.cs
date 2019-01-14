@@ -39,13 +39,19 @@ namespace SysmtemIO_demo
                     string selectedOption = Console.ReadLine();
                     int selected = Convert.ToInt32(selectedOption);
 
-                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5) ;
+                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5);
                     {
                         switch (selected)
                         {
                             case 1:
                                 ViewAll(path);
                                 break;
+                            case 2:
+                                Console.WriteLine("What word do you want to add?");
+                                string addWord = Console.ReadLine().ToUpper();
+                                Add(path, addWord);
+                                break;
+
                         }
                     }
                 }
@@ -73,6 +79,22 @@ namespace SysmtemIO_demo
             }
             Console.WriteLine(lines[0]);
             return lines[0];
+        }
+
+        public static string Add(string path, string addWord)
+        {
+            try
+            {
+                using (StreamWriter streamWriter = File.AppendText(path))
+                {
+                    streamWriter.WriteLine(addWord);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return addWord;
         }
     }
 }
