@@ -44,7 +44,7 @@ namespace SysmtemIO_demo
                         switch (selected)
                         {
                             case 1:
-
+                                ViewAll(path);
                                 break;
                         }
                     }
@@ -55,6 +55,24 @@ namespace SysmtemIO_demo
                     Console.WriteLine("Please choose from option Menu");
                 }
             }
-        }    
+        }  
+        public static string ViewAll(string path)
+        {
+            string[] lines = File.ReadAllLines(path);
+                try
+                {
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        Console.WriteLine(lines[i]);
+                    }
+                }
+
+                catch (Exception e)
+                {
+                throw e;
+            }
+            Console.WriteLine(lines[0]);
+            return lines[0];
+        }
     }
 }
