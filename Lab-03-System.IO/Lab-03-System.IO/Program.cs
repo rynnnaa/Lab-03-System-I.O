@@ -51,6 +51,8 @@ namespace SysmtemIO_demo
                                 string addWord = Console.ReadLine().ToUpper();
                                 Add(path, addWord);
                                 break;
+                            case 3:
+                                DeleteWord(path);
 
                         }
                     }
@@ -95,6 +97,12 @@ namespace SysmtemIO_demo
                 throw e;
             }
             return addWord;
+        }
+
+        public static string DeleteWord(string path)
+        {
+            try { 
+}
         }
     }
 }
