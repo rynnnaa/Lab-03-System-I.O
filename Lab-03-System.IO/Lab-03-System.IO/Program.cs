@@ -37,10 +37,22 @@ namespace SysmtemIO_demo
                 try
                 {
                     string selectedOption = Console.ReadLine();
-                    selected = Convert.ToInt32(selectedOption);
+                    int selected = Convert.ToInt32(selectedOption);
 
-                    
+                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5) ;
+                    {
+                        switch (selected)
+                        {
+                            case 1:
 
+                                break;
+                        }
+                    }
+                }
+
+                catch
+                {
+                    Console.WriteLine("Please choose from option Menu");
                 }
             }
         }    
