@@ -101,8 +101,68 @@ namespace SysmtemIO_demo
 
         public static string DeleteWord(string path)
         {
-            try { 
-}
+            try
+            {
+                if (userDelete.Length > 0)
+                {
+                    string[] wordsInTxt = File.ReadAllLines(path);
+                    foreach (string word in wordsInTxt)
+                    {
+
+                        if (string.Equals(word, userDelete, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            //show new list minus deleted word
+                            string[] newFileList = new string[wordsInTxt.Length - 1];
+                            int counter = 0;
+                            for (int i = 0; i < newFileList.Length; i++)
+                            {
+                                if (userDelete == wordsInTxt[counter])
+                                {
+                                    i--;
+                                    counter++;
+                                }
+                                else
+                                {
+                                    newFileList[i] = wordsInTxt[counter];
+                                    counter++;
+                                }
+                            }
+                            // send the list of words to txt file
+                            using (StreamWriter streamWriter = new StreamWriter(path))
+                            {
+                                for (int i = 0; i < newFileList.Length; i++)
+                                {
+                                    streamWriter.WriteLine(newFileList[i]);
+                                }
+                            }
+                            Console.WriteLine($"{userDelete} Deleted.");
+
+                        }
+
+                    }
+                    Console.WriteLine($"{userDelete} does not exist");
+
+                }
+                else
+                {
+                    throw new Exception("Please enter word to be deleted.");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Try again");
+            }
+            return userDelete;
         }
+
+        /// <summary>
+        /// View all the words in the txt file
+        /// </summary>
+        /// <param name="path">location of file</param>
     }
 }
