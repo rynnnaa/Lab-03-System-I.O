@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 
-namespace SysmtemIO_demo
+namespace System_IO
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            string path = "../../../hangmanGame.txt";
+            string path = "../hangmanGame.txt";
             CreateFile(path);
             GameMenuUI(path);
 
@@ -39,7 +39,7 @@ namespace SysmtemIO_demo
                     string selectedOption = Console.ReadLine();
                     int selected = Convert.ToInt32(selectedOption);
 
-                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5);
+                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5) ;
                     {
                         switch (selected)
                         {
@@ -53,6 +53,10 @@ namespace SysmtemIO_demo
                                 break;
                             case 3:
                                 DeleteWord(path);
+                                break;
+                            case 4:
+                                break;
+
 
                         }
                     }
@@ -63,20 +67,20 @@ namespace SysmtemIO_demo
                     Console.WriteLine("Please choose from option Menu");
                 }
             }
-        }  
+        }
         public static string ViewAll(string path)
         {
             string[] lines = File.ReadAllLines(path);
-                try
+            try
+            {
+                for (int i = 0; i < lines.Length; i++)
                 {
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        Console.WriteLine(lines[i]);
-                    }
+                    Console.WriteLine(lines[i]);
                 }
+            }
 
-                catch (Exception e)
-                {
+            catch (Exception e)
+            {
                 throw e;
             }
             Console.WriteLine(lines[0]);
@@ -99,35 +103,35 @@ namespace SysmtemIO_demo
             return addWord;
         }
 
-        public static string DeleteWord(string path)
+        public static string DeleteWord(string path, string userDelete)
         {
             try
             {
                 if (userDelete.Length > 0)
                 {
-                    string[] wordsInTxt = File.ReadAllLines(path);
-                    foreach (string word in wordsInTxt)
+                    string[] wordsInFile = File.ReadAllLines(path);
+                    foreach (string word in wordsInFile)
                     {
-
+                        //check if delete word rwuest equals a word in list, and ignores differences in case
                         if (string.Equals(word, userDelete, StringComparison.CurrentCultureIgnoreCase))
                         {
-                            //show new list minus deleted word
-                            string[] newFileList = new string[wordsInTxt.Length - 1];
+                            //the new list of words without deleted word
+                            string[] newFileList = new string[wordsInFile.Length - 1];
                             int counter = 0;
                             for (int i = 0; i < newFileList.Length; i++)
                             {
-                                if (userDelete == wordsInTxt[counter])
+                                if (userDelete == wordsInFile[counter])
                                 {
                                     i--;
                                     counter++;
                                 }
                                 else
                                 {
-                                    newFileList[i] = wordsInTxt[counter];
+                                    newFileList[i] = wordsInFile[counter];
                                     counter++;
                                 }
                             }
-                            // send the list of words to txt file
+                            //this send the new list of words to the txt file
                             using (StreamWriter streamWriter = new StreamWriter(path))
                             {
                                 for (int i = 0; i < newFileList.Length; i++)
@@ -159,26 +163,6 @@ namespace SysmtemIO_demo
             }
             return userDelete;
         }
-
-        /// <summary>
-        /// View all the words in the txt file
-        /// </summary>
-        /// <param name="path">location of file</param>
-
-        public static string GetRandomWord(string path)
-        {
-            try
-            {   //gets random word from array of words
-                string[] lines = File.ReadAllLines(path);
-                Random line = new Random();
-                int index = line.Next(lines.Length);
-                return lines[index];
-            }
-            catch (Exception e)
-            {
-                throw e;
-
-            }
-        }
     }
+
 }

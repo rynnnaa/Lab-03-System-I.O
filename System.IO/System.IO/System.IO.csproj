@@ -3,11 +3,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>Lab_03_System.IO</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\HangmanTest\HangmanTest.csproj" />
-  </ItemGroup>
 
 </Project>
