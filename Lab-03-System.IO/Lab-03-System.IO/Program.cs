@@ -164,5 +164,21 @@ namespace SysmtemIO_demo
         /// View all the words in the txt file
         /// </summary>
         /// <param name="path">location of file</param>
+
+        public static string GetRandomWord(string path)
+        {
+            try
+            {   //gets random word from array of words
+                string[] lines = File.ReadAllLines(path);
+                Random line = new Random();
+                int index = line.Next(lines.Length);
+                return lines[index];
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+        }
     }
 }
