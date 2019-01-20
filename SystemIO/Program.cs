@@ -60,8 +60,11 @@ namespace System_IO
                             case 4:
                                 Play(path);
                                 break;
+                            default:
+                                Environment.Exit(0);
+                                break;
 
-
+                
 
                         }
                     }
@@ -117,7 +120,7 @@ namespace System_IO
                     string[] wordsInFile = File.ReadAllLines(path);
                     foreach (string word in wordsInFile)
                     {
-                        //check if delete word rwuest equals a word in list, and ignores differences in case
+                        //check if delete word equals a word in list, and ignores differences in case
                         if (string.Equals(word, userDelete, StringComparison.CurrentCultureIgnoreCase))
                         {
                             //the new list of words without deleted word
