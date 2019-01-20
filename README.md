@@ -1,10 +1,12 @@
 # Lab-03-System-I.O
 
-Developer: Ryna Truon
+Create a word guessing game that allows the user to guess a mystery word, inputting one letter at a time. All letters will be saved (both correct and incorrect) throughout each game session. Each time a new session starts, a random word is selected and output from an external text file. The user has the ability to view all words, add a word, and remove a word.
 
-Contributors: 
+Developer: Ryna Truong
 
-Actual Time to complete: In process
+Contributors: Dez Teague, Jason Few, Andrew Hinojosa
+
+Actual Time to complete: 10 hours
 
 User must create a new project in Visual Studio.
 User must push project to Github.
@@ -17,8 +19,10 @@ User must have error exception handling
 User must have an option to be able to play again
 User should only be allowed to guess only 1 letter at a time.
 
-Purpose of the program is to have user guess letters to guess a word that is apart of a txt file. You may also view all words, add, and delete.
-
 To Run the program, user must click the start button (Green arrow) in Visual Studio.
 
 Successful Output:
+
+![1](https://github.com/rynnnaa/Lab-03-System-I.O/blob/master/Cap1.PNG)
+![2](https://github.com/rynnnaa/Lab-03-System-I.O/blob/master/Cap2.PNG)
+![3](https://github.com/rynnnaa/Lab-03-System-I.O/blob/master/Cap3.PNG)
