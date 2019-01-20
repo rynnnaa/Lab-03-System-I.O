@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace System_IO
 {
@@ -39,7 +40,7 @@ namespace System_IO
                     string selectedOption = Console.ReadLine();
                     int selected = Convert.ToInt32(selectedOption);
 
-                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5) ;
+                    if (selected == 1 || selected == 2 || selected == 3 || selected == 4 || selected == 5)
                     {
                         switch (selected)
                         {
@@ -52,10 +53,14 @@ namespace System_IO
                                 Add(path, addWord);
                                 break;
                             case 3:
-                                DeleteWord(path);
+                                Console.WriteLine("What word do you want to delete?");
+                                string userDelete = Console.ReadLine().ToUpper();
+                                DeleteWord(path, userDelete);
                                 break;
                             case 4:
+                                Play(path);
                                 break;
+
 
 
                         }
@@ -163,6 +168,83 @@ namespace System_IO
             }
             return userDelete;
         }
-    }
 
+        public static string GetRandomWord(string path)
+        {
+            try
+            {   //gets randome word from array of words from txt
+                string[] lines = File.ReadAllLines(path);
+                Random line = new Random();
+                int index = line.Next(lines.Length);
+                return lines[index];
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+        }
+
+        public static void Play(string path)
+        {
+            try
+            {
+                //getting word from random method and setting vars for later
+                string word = GetRandomWord(path);
+                string userGuess = " ";
+                string[] renderWord = new string[word.Length];
+
+                for (int i = 0; i < word.Length; i++)
+                {
+                    renderWord[i] = " _ ";
+                }
+
+                foreach (string l in renderWord)
+                {
+                    Console.Write(l);
+                }
+
+                Console.WriteLine();
+
+                bool userWins = false;
+                while (!userWins)
+                {
+                    //logic for determining if user guess is a match
+                    Console.WriteLine("Guess a Letter");
+                    string letter = Console.ReadLine();
+
+                    if (letter != null && (word.ToLower().Contains(letter.ToLower()) && !userGuess.Contains(letter)))
+                    {
+                        for (int i = 0; i < word.Length; i++)
+                        {
+                            if (word[i].ToString().ToLower() == letter)
+                            {
+                                renderWord[i] = letter;
+                                userGuess += letter;
+                            }
+                            else
+                            {
+                                Console.Write(renderWord[i]);
+                            }
+                        }
+
+                        Console.WriteLine($"You Guessed: {userGuess}");
+
+                        if (!renderWord.Contains(" _ "))
+                        {
+                            Console.WriteLine("You Win");
+                            userWins = true;
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+        }
+    }
 }
