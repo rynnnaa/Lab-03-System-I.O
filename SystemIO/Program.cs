@@ -9,7 +9,7 @@ namespace System_IO
     {
         public static void Main(string[] args)
         {
-            string path = "../hangmanGame.txt";
+            string path = "../../../hangmanGame.txt";
             CreateFile(path);
             GameMenuUI(path);
 
