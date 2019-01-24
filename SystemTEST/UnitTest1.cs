@@ -61,8 +61,5 @@ namespace SystemTEST
                 string[] expectedResult = { "minus", "plus", "equals", "UPDATE" };
                 Assert.Equal(expectedResult, Program.Add(update));
             }
-
-
-
         }
 }
